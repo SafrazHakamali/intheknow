@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.new
+user1.email = 'movies@movies.com'
+user1.password = '123456'
+user1.password_confirmation = '123456'
+user1.save!
+
+file = Roo::Spreadsheet.open("public/movies.xlsx")
+index = 0
+@shows = {} 
+file.sheet(0)
+2.upto(4715) do |line|
+  title = file.cell(line, 2)
+  overview = file.cell(line, 3)
+  budget = file.cell(line, 4)
+  revenue = file.cell(line, 5)
+  runtime = file.cell(line, 6)
+  image = file.cell(line, 7)
+
+  @shows[index] = Movie.create!(title: title, overview: overview, budget: budget, revenue: revenue, image: image, user_id: 1)
+  puts line
+  puts title
+  index = index + 1
+end
