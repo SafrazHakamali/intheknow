@@ -16,7 +16,7 @@ file.sheet(0)
   runtime = file.cell(line, 6)
   image = file.cell(line, 7)
 
-  @shows[index] = Movie.create!(title: title, overview: overview, budget: budget, revenue: revenue, image: image, user_id: 1)
+  @shows[index] = Movie.create!(title: title, overview: overview, budget: budget, revenue: revenue, runtime: runtime, image: image, user_id: 1)
   puts line
   puts title
   index = index + 1

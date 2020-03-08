@@ -1,12 +1,9 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
-$white: white;
-$black: black;
-
-.navbar {
-        margin-bottom: 0;
-        background: $black;
+.extrapad {
+        padding-right: 50px;
+	padding-left: 50px;
 }
 
 body {
@@ -14,17 +11,19 @@ body {
         color: white;
         font-family: 'Merriweather', sans-serif;
 }
-h1,
-h2 {
+
+h1, h2 {
         font-weight: bold;
 }
+
 p {
         font-size: 16px;
-        color: $white;
+        color: white;
 }
 a:visited {
         color: white;
 }
+
 .jumbotron {
         background: #0048CD;
         color: $white;
@@ -34,27 +33,23 @@ a:visited {
                 font-size: 26px;
         }
 }
+
 .link {
         color: white;
 }
+
 .btn-primary {
-        color: $white;
-        border-color: $white;
+        color: white;
+        border-color: white;
         margin-bottom: 5px;
 }
+
 .btn-sm {
         background-color: $white;
         display: inline-block;
 }
 
-video,
-audio {
-        margin-top: 20px;
-        max-width: 80%;
-}
 caption {
-
         float: left;
         clear: both;
-
 }
