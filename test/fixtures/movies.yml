@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  overview: MyText
+  budget: 1
+  revenue: 1
+  runtime: 1
+  image: MyText
+
+two:
+  title: MyString
+  overview: MyText
+  budget: 1
+  revenue: 1
+  runtime: 1
+  image: MyText
