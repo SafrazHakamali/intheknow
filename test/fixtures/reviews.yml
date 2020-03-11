@@ -3,7 +3,12 @@
 one:
   rating: 1
   comment: MyText
+  user: one
+  movie: one
+
 
 two:
   rating: 1
   comment: MyText
+  user: two
+  movie: two

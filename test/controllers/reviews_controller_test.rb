@@ -1,48 +1,71 @@
-require 'test_helper'
+class ReviewsController < ApplicationController
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie
+  before_action :authenticate_user!
 
-class ReviewsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @review = reviews(:one)
+  # GET /reviews
+  # GET /reviews.json
+  # GET /reviews/new
+  def new
+    @review = Review.new
   end
 
-  test "should get index" do
-    get reviews_url
-    assert_response :success
+  # GET /reviews/1/edit
+  def edit
   end
 
-  test "should get new" do
-    get new_review_url
-    assert_response :success
-  end
-
-  test "should create review" do
-    assert_difference('Review.count') do
-      post reviews_url, params: { review: { comment: @review.comment, rating: @review.rating } }
+  # POST /reviews
+  # POST /reviews.json
+  def create
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    @review.movie_id = @movie.id
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to @movie, notice: 'Review was successfully created.' }
+        format.json { render :show, status: :created, location: @review }
+      else
+        format.html { render :new }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
     end
-
-    assert_redirected_to review_url(Review.last)
   end
 
-  test "should show review" do
-    get review_url(@review)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_review_url(@review)
-    assert_response :success
-  end
-
-  test "should update review" do
-    patch review_url(@review), params: { review: { comment: @review.comment, rating: @review.rating } }
-    assert_redirected_to review_url(@review)
-  end
-
-  test "should destroy review" do
-    assert_difference('Review.count', -1) do
-      delete review_url(@review)
+  # PATCH/PUT /reviews/1
+  # PATCH/PUT /reviews/1.json
+  def update
+    respond_to do |format|
+      if @review.update(review_params)
+        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.json { render :show, status: :ok, location: @review }
+      else
+        format.html { render :edit }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
     end
-
-    assert_redirected_to reviews_url
   end
+
+  # DELETE /reviews/1
+  # DELETE /reviews/1.json
+  def destroy
+    @review.destroy
+    respond_to do |format|
+      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_review
+      @review = Review.find(params[:id])
+    end
+    
+    def set_movie
+      @movie = Movie.find(params[:movie_id])
+    end
+    # Only allow a list of trusted parameters through.
+    def review_params
+      params.require(:review).permit(:rating, :comment, :user_id, :movie_id)
+    end
 end

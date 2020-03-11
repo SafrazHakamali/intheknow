@@ -6,13 +6,23 @@
 	padding-left: 50px;
 }
 
+.panel {
+        margin: auto !important;
+        text-align: centre !important;
+}
+
 body {
         background-color: black;
         color: white;
         font-family: 'Merriweather', sans-serif;
 }
 
-h1, h2 {
+h1 {
+        font-weight: bold;
+        text-align: center;
+}
+
+h2 {
         font-weight: bold;
 }
 
@@ -22,6 +32,13 @@ p {
 }
 a:visited {
         color: white;
+}
+
+.reviews {
+        border-style: solid;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px
 }
 
 .jumbotron {

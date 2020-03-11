@@ -15,7 +15,9 @@ class ReviewsTest < ApplicationSystemTestCase
     click_on "New Review"
 
     fill_in "Comment", with: @review.comment
+    fill_in "Movie", with: @review.movie_id
     fill_in "Rating", with: @review.rating
+    fill_in "User", with: @review.user_id
     click_on "Create Review"
 
     assert_text "Review was successfully created"
@@ -27,7 +29,9 @@ class ReviewsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Comment", with: @review.comment
+    fill_in "Movie", with: @review.movie_id
     fill_in "Rating", with: @review.rating
+    fill_in "User", with: @review.user_id
     click_on "Update Review"
 
     assert_text "Review was successfully updated"
