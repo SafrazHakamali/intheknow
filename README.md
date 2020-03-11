@@ -1,24 +1,4 @@
-# README
+User Story:
+A movie lover who wants to explore additional movies to watch and wants to share with others their opinion of movies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ERD in repo: ERD.jpg
